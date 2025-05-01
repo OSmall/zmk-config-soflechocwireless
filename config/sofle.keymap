@@ -60,14 +60,7 @@
 /* END temporary RGB support section */
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        tri_layer_sticky {
-            bindings = <&sl 4>;
-            key-positions = <53 56>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
@@ -148,6 +141,15 @@
 &trans      &trans        &trans        &rgb_ug RGB_EFF  &rgb_ug RGB_TOG  &trans        &trans    &trans  &trans  &kp C_MUTE         &trans   &trans   &trans   &trans
                           &trans        &trans           &trans           &trans        &trans    &trans  &trans  &trans             &trans   &trans
             >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        tri_layer_conditional {
+            if-layers = <2 3>;
+            then-layer = <4>;
         };
     };
 };
