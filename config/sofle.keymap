@@ -11,7 +11,8 @@
 
 #include <dt-bindings/led/led.h>
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // default: 600
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 2250   // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 100    // default: 10
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -57,7 +58,15 @@
     };
 };
 
-&mmv { time-to-max-speed-ms = <500>; };
+&mmv {
+    time-to-max-speed-ms = <650>;
+    acceleration-exponent = <2>;
+};
+
+&msc {
+    acceleration-exponent = <1>;
+    time-to-max-speed-ms = <5000>;
+};
 
 / {
     chosen { zmk,underglow = &led_strip; };
