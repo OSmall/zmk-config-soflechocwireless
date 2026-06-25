@@ -75,7 +75,14 @@
 /* END temporary RGB support section */
 
 / {
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        Enter {
+            bindings = <&kp ENTER>;
+            key-positions = <54 55>;
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -86,20 +93,10 @@
 &kp ESC    &kp Q   &kp W     &kp E     &kp R      &kp T                                      &kp Y   &kp U      &kp I      &kp O     &kp P     &kp F13
 &kp TAB    &kp A   &kp S     &kp D     &kp F      &kp G                                      &kp H   &kp J      &kp K      &kp L     &kp SEMI  &kp APOSTROPHE
 &kp LSHFT  &kp Z   &kp X     &kp C     &kp V      &kp B   &kp LEFT_SHIFT    &kp RIGHT_SHIFT  &kp N   &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                   &kp LGUI  &kp LALT  &kp LCTRL  &mo 3   &lt 1 SPACE       &kp BACKSPACE    &mo 4   &kp RCTRL  &kp RALT   &kp RGUI
+                   &kp LGUI  &kp LALT  &kp LCTRL  &mo 2   &kp SPACE         &kp BACKSPACE    &mo 3   &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        space_layer {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &kp ENTER  &trans  &trans  &trans  &trans
-            >;
         };
 
         gaming_layer {
@@ -108,7 +105,7 @@
 &trans  &trans  &trans   &trans        &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans   &trans        &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans   &trans        &trans  &trans            &kp LEFT_SHIFT    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &kp F13  &kp LEFT_ALT  &mo 3   &kp LEFT_CONTROL  &kp SPACE         &trans  &trans  &trans  &trans  &trans
+                &kp F13  &kp LEFT_ALT  &mo 2   &kp LEFT_CONTROL  &trans            &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -140,7 +137,7 @@
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4                    &trans   &trans   &trans   &trans   &trans   &trans
 &trans      &rgb_ug RGB_SPD  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &trans                          &trans   &trans   &trans   &trans   &trans   &trans
-&trans      &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &tog 2                          &kp F13  &kp F14  &kp F15  &kp F16  &kp F17  &kp F18
+&trans      &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &tog 1                          &kp F13  &kp F14  &kp F15  &kp F16  &kp F17  &kp F18
 &trans      &trans           &trans           &rgb_ug RGB_EFF  &rgb_ug RGB_TOG  &trans        &trans    &trans  &trans   &trans   &trans   &trans   &trans   &trans
                              &trans           &trans           &trans           &trans        &trans    &trans  &trans   &trans   &trans   &trans
             >;
@@ -151,8 +148,8 @@
         compatible = "zmk,conditional-layers";
 
         tri_layer_conditional {
-            if-layers = <3 4>;
-            then-layer = <5>;
+            if-layers = <2 3>;
+            then-layer = <4>;
         };
     };
 };
